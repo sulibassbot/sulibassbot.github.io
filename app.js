@@ -3,7 +3,7 @@ const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 
 // Initialize the OpenAI API
-const openai = require('openai')('<YOUR_OPENAI_API_KEY>');
+const openai = require('openai')('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');
 
 // Add an event listener to the send button
 sendBtn.addEventListener('click', () => {

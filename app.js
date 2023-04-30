@@ -1,6 +1,6 @@
 const messagesContainer = document.getElementById('messages');
 const userInput = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
+const sendBtn = document.querySelector('.send-btn');
 
 // Initialize the OpenAI API
 const openai = require('openai');

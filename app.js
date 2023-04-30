@@ -1,49 +1,35 @@
-// Code for carousel
-let slideIndex = 0;
-const slides = document.getElementsByClassName("carousel-item");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const messagesContainer = document.getElementById('messages');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-showSlides();
+// Initialize the OpenAI API
+const openai = require('openai')('<YOUR_OPENAI_API_KEY>');
 
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 5000);
-}
+// Add an event listener to the send button
+sendBtn.addEventListener('click', () => {
+  // Get the user's input
+  const userInputValue = userInput.value;
 
-prevBtn.addEventListener("click", () => {
-  slideIndex--;
-  if (slideIndex < 1) {
-    slideIndex = slides.length;
-  }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-});
+  // Add the user's message to the messages container
+  messagesContainer.innerHTML += `<p><strong>You:</strong> ${userInputValue}</p>`;
 
-nextBtn.addEventListener("click", () => {
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-});
+  // Use the OpenAI API to generate a response
+  openai.completions.create({
+    engine: 'davinci',
+    prompt: userInputValue,
+    max_tokens: 50,
+    n: 1,
+    stop: '\n',
+  })
+  .then(response => {
+    // Add the response to the messages container
+    const responseData = response.data[0].text;
+    messagesContainer.innerHTML += `<p><strong>Bot:</strong> ${responseData}</p>`;
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
-// Code for search bar
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-searchBtn.addEventListener("click", () => {
-  const searchTerm = searchInput.value;
-  // Code to search catalog for searchTerm
+  // Clear the user's input
+  userInput.value = '';
 });

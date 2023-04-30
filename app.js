@@ -1,60 +1,49 @@
-// Get the input field and button
-var input = document.querySelector('input[type="text"]');
-var button = document.querySelector('button');
+// Code for carousel
+let slideIndex = 0;
+const slides = document.getElementsByClassName("carousel-item");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-// Get the messages container
-var messages = document.querySelector('.messages');
+showSlides();
 
-// Function to add a new message to the chat
-function addMessage(content, isSent) {
-    // Create a new message element
-    var message = document.createElement('div');
-    message.classList.add('message');
-    
-    // Set the message class based on whether it was sent or received
-    if (isSent) {
-        message.classList.add('sent');
-    } else {
-        message.classList.add('received');
-    }
-    
-    // Set the message content
-    message.innerHTML = '<p>' + content + '</p>';
-    
-    // Append the message to the messages container
-    messages.appendChild(message);
-    
-    // Scroll to the bottom of the messages container
-    messages.scrollTop = messages.scrollHeight;
+function showSlides() {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 5000);
 }
 
-// Function to handle the button click event
-function sendMessage() {
-    // Get the text from the input field
-    var messageText = input.value;
-    
-    // If the input field is empty, do nothing
-    if (messageText.trim() === '') {
-        return;
-    }
-    
-    // Add the message to the chat as sent
-    addMessage(messageText, true);
-    
-    // TODO: Send the message to the bot and get the response
-    
-    // Clear the input field
-    input.value = '';
-}
-
-// Add a click event listener to the button
-button.addEventListener('click', sendMessage);
-
-// Add a keydown event listener to the input field
-input.addEventListener('keydown', function(event) {
-    // If the user pressed the Enter key, send the message
-    if (event.keyCode === 13) {
-        sendMessage();
-    }
+prevBtn.addEventListener("click", () => {
+  slideIndex--;
+  if (slideIndex < 1) {
+    slideIndex = slides.length;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
 });
 
+nextBtn.addEventListener("click", () => {
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+});
+
+// Code for search bar
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
+searchBtn.addEventListener("click", () => {
+  const searchTerm = searchInput.value;
+  // Code to search catalog for searchTerm
+});

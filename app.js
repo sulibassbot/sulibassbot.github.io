@@ -3,7 +3,10 @@ const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 
 // Initialize the OpenAI API
-const openai = require('openai')('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');
+const openai = require('openai');
+const api_key = process.env.OPENAI_API_KEY;
+
+const client = new openai.api(api_key);
 
 // Add an event listener to the send button
 sendBtn.addEventListener('click', () => {
@@ -14,7 +17,7 @@ sendBtn.addEventListener('click', () => {
   messagesContainer.innerHTML += `<p><strong>You:</strong> ${userInputValue}</p>`;
 
   // Use the OpenAI API to generate a response
-  openai.completions.create({
+  client.completions.create({
     engine: 'davinci',
     prompt: userInputValue,
     max_tokens: 50,

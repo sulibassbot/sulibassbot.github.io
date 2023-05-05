@@ -79,4 +79,3 @@ class Chatbot {
     this.output.scrollTop = this.output.scrollHeight;
   }
 }
-;

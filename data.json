@@ -1,0 +1,31 @@
+{
+  "greetings": [
+    "Hi there!",
+    "Hello!",
+    "Hey, how can I help you?"
+  ],
+  "farewells": [
+    "Goodbye!",
+    "See you later!",
+    "Take care!"
+  ],
+  "questions": {
+    "what is your name": [
+      "My name is Chatbot.",
+      "I'm Chatbot, nice to meet you."
+    ],
+    "what can you do": [
+      "I can answer your questions and help you find information.",
+      "I'm here to assist you with anything you need."
+    ],
+    "where are you located": [
+      "I'm located on the internet!",
+      "I don't have a physical location, but I'm always here to help."
+    ],
+    "what is your favorite color": [
+      "I'm a chatbot, I don't have a favorite color!",
+      "I'm not sure, but I think all colors are great."
+    ]
+  }
+}
+

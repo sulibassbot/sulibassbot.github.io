@@ -1,81 +1,54 @@
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+// Set up variables
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+const chatLog = document.querySelector(".chat-log");
+
+require('dotenv').config(); // Load the .env file
+
+async function sendMessage(message) {
+  const response = await fetch("https://api.openai.com/v1/engine/engines/davinci-codex/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      prompt: `User: ${message}\nBot:`,
+      max_tokens: 150,
+      temperature: 0.5,
+      n: 1,
+      stop: "\n",
+    }),
   });
-});
+  const data = await response.json();
+  return data.choices[0].text.trim();
+}
 
-// Form submission
-const form = document.querySelector('form');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const name = form.querySelector('#name').value;
-  const email = form.querySelector('#email').value;
-  const message = form.querySelector('#message').value;
-  alert(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
-});
+// Define function to add message to chat log
+function addMessageToLog(message, sender) {
+  const messageContainer = document.createElement("div");
+  messageContainer.classList.add("chat-message");
+  messageContainer.classList.add(sender);
+  messageContainer.textContent = message;
+  chatLog.appendChild(messageContainer);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
 
-// Load JSON data
-fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    // Initialize chatbot
-    const chatbot = new Chatbot(data);
-
-    // Add event listener for chat input submit
-    const chatInput = document.getElementById('chat-input');
-    const chatSubmit = document.getElementById('chat-submit');
-    chatSubmit.addEventListener('click', () => {
-      const query = chatInput.value.trim();
-      chatbot.handleQuery(query);
-      chatInput.value = '';
-    });
-    chatInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const query = chatInput.value.trim();
-        chatbot.handleQuery(query);
-        chatInput.value = '';
-      }
-    });
-  })
-  .catch(error => console.error(error));
-
-// Chatbot class
-class Chatbot {
-  constructor(data) {
-    this.data = data;
-    this.output = document.getElementById('chat-output');
-  }
-
-  handleQuery(query) {
-    // Add user message to output
-    const userMessage = `<div class="chat-message user">${query}</div>`;
-    this.output.insertAdjacentHTML('beforeend', userMessage);
-
-    // Check for matching patterns
-    let matched = false;
-    for (const pattern in this.data.questions) {
-      const regex = new RegExp(pattern, 'i');
-      if (regex.test(query)) {
-        const responses = this.data.questions[pattern];
-        const randomIndex = Math.floor(Math.random() * responses.length);
-        const botMessage = `<div class="chat-message bot">${responses[randomIndex]}</div>`;
-        this.output.insertAdjacentHTML('beforeend', botMessage);
-        matched = true;
-        break;
-      }
-    }
-
-    // If no pattern matched, use a default response
-    if (!matched) {
-      const defaultResponse = `<div class="chat-message bot">I'm sorry, I didn't understand your question.</div>`;
-      this.output.insertAdjacentHTML('beforeend', defaultResponse);
-    }
-
-    // Scroll to the bottom of the chat output
-    this.output.scrollTop = this.output.scrollHeight;
+// Define function to handle user input
+async function handleUserInput() {
+  const message = userInput.value.trim();
+  if (message !== "") {
+    userInput.value = "";
+    addMessageToLog(message, "user");
+    const botMessage = await sendMessage(message);
+    addMessageToLog(botMessage, "bot");
   }
 }
+
+// Set up event listeners
+sendBtn.addEventListener("click", handleUserInput);
+userInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleUserInput();
+  }
+});

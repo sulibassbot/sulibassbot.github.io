@@ -1,50 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>University Library</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
-      <img src="logo.PNG" alt="Logo" srcset="" class="logo">
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#">Catalog</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Portfolio</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
+
     <main>
-      <img src="students.jpg" alt="Student Icon" srcset="" class="stdicon">
-      <section>
-        <h2>Welcome to the University Library</h2>
-        <p>Our library offers a wide range of resources to support your academic journey. Explore our collection and find what you need to succeed.</p>
-        <a href="https://youtube.com" class="button">Get Started</a>
+      <section id="about">
+        <h2>About Me</h2>
+        <p>I am a web developer with a passion for creating beautiful and responsive websites.</p>
       </section>
-      <section>
-        <h2>Latest News</h2>
-        <ul>
-          <li><a href="#">New Study Spaces Available</a></li>
-          <li><a href="#">Summer Reading Recommendations</a></li>
-          <li><a href="#">Library Hours for Final Exams</a></li>
-          <li><a href="#">Library Hours for Final Exams</a></li>
-        </ul>
+
+      <section id="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-items">
+          <div class="portfolio-item">
+            <img src="images/portfolio-item-1.jpg" alt="Portfolio Item 1">
+            <h3>Portfolio Item 1</h3>
+          </div>
+          <div class="portfolio-item">
+            <img src="images/portfolio-item-2.jpg" alt="Portfolio Item 2">
+            <h3>Portfolio Item 2</h3>
+          </div>
+          <div class="portfolio-item">
+            <img src="images/portfolio-item-3.jpg" alt="Portfolio Item 3">
+            <h3>Portfolio Item 3</h3>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>ChatGPT Bot</h2>
-        <div id="chat-container">
-          <div id="messages"></div>
-          <input type="text" id="user-input" placeholder="Ask a question...">
-          <button class="send-btn">Send</button>
-        </div>        
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
       </section>
     </main>
+
     <footer>
-      <p>&copy; University Library 2023</p>
+      <p>&copy; 2023 My Portfolio. All rights reserved.</p>
     </footer>
+
     <script src="app.js"></script>
   </body>
 </html>

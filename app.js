@@ -1,38 +1,19 @@
-const messagesContainer = document.getElementById('messages');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.querySelector('.send-btn');
-
-// Initialize the OpenAI API
-const openai = require('openai');
-const api_key = process.env.OPENAI_API_KEY;
-
-const client = new openai.api(api_key);
-
-// Add an event listener to the send button
-sendBtn.addEventListener('click', () => {
-  // Get the user's input
-  const userInputValue = userInput.value;
-
-  // Add the user's message to the messages container
-  messagesContainer.innerHTML += `<p><strong>You:</strong> ${userInputValue}</p>`;
-
-  // Use the OpenAI API to generate a response
-  client.completions.create({
-    engine: 'davinci',
-    prompt: userInputValue,
-    max_tokens: 50,
-    n: 1,
-    stop: '\n',
-  })
-  .then(response => {
-    // Add the response to the messages container
-    const responseData = response.data[0].text;
-    messagesContainer.innerHTML += `<p><strong>Bot:</strong> ${responseData}</p>`;
-  })
-  .catch(error => {
-    console.error(error);
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
   });
+});
 
-  // Clear the user's input
-  userInput.value = '';
+// Form submission
+const form = document.querySelector('form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = form.querySelector('#name').value;
+  const email = form.querySelector('#email').value;
+  const message = form.querySelector('#message').value;
+  alert(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
 });

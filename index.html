@@ -1,81 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenAI Chatbot</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <h1>SU Library Assistant Bot</h1>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>I am a web developer with a passion for creating beautiful and responsive websites.</p>
-      </section>
-
-      <section id="chatbot">
-        <h2>Chatbot</h2>
-        <div id="chat-container">
-          <div id="chat-output"></div>
-          <div id="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Ask me anything">
-            <button id="chat-submit">Send</button>
-          </div>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>OpenAI Chatbot</h1>
         </div>
-      </section>
-
-
-      <section id="portfolio">
-        <h2>My Portfolio</h2>
-        <div class="portfolio-items">
-          <div class="portfolio-item">
-            <img src="students.jpg" alt="Portfolio Item 1">
-            <h3>Portfolio Item 1</h3>
-          </div>
-          <div class="portfolio-item">
-            <img src="logo.PNG" alt="Portfolio Item 2">
-            <h3>Portfolio Item 2</h3>
-          </div>
-          <div class="portfolio-item">
-            <img src="students.jpg" alt="Portfolio Item 3">
-            <h3>Portfolio Item 3</h3>
-          </div>
+        <div class="chat-log"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button id="send-btn">Send</button>
         </div>
-      </section>
-
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-
-          <button type="submit">Send</button>
-        </form>
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2023 SULibAssBot. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script src="app.js"></script>
-  </body>
+</body>
 </html>
-

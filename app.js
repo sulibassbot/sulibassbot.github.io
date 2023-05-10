@@ -1,38 +1,30 @@
-const messagesContainer = document.getElementById('messages');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.querySelector('.send-btn');
-
-// Initialize the OpenAI API
-const openai = require('openai');
-const api_key = process.env.OPENAI_API_KEY;
-
-const client = new openai.api(api_key);
-
-// Add an event listener to the send button
-sendBtn.addEventListener('click', () => {
-  // Get the user's input
-  const userInputValue = userInput.value;
-
-  // Add the user's message to the messages container
-  messagesContainer.innerHTML += `<p><strong>You:</strong> ${userInputValue}</p>`;
-
-  // Use the OpenAI API to generate a response
-  client.completions.create({
-    engine: 'davinci',
-    prompt: userInputValue,
-    max_tokens: 50,
-    n: 1,
-    stop: '\n',
-  })
-  .then(response => {
-    // Add the response to the messages container
-    const responseData = response.data[0].text;
-    messagesContainer.innerHTML += `<p><strong>Bot:</strong> ${responseData}</p>`;
-  })
-  .catch(error => {
-    console.error(error);
+// Change navigation link active state on scrolling
+const sections = document.querySelectorAll("main section");
+window.addEventListener("scroll", () => {
+  let currentSection = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      currentSection = section.getAttribute("id");
+    }
   });
-
-  // Clear the user's input
-  userInput.value = '';
+  navLinks.forEach((navLink) => {
+    navLink.classList.remove("active");
+    if (navLink.getAttribute("href").slice(1) === currentSection) {
+      navLink.classList.add("active");
+    }
+  });
 });
+
+function showPage(pageId) {
+  // Hide all pages
+  const pages = document.querySelectorAll('main > div');
+  for (let page of pages) {
+    page.style.display = 'none';
+  }
+
+  // Show the clicked page
+  const pageToShow = document.querySelector(`#${pageId}`);
+  pageToShow.style.display = 'block';
+}

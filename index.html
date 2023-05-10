@@ -1,51 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>University Library</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Library</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a href="#home" onclick="showPage('home')">Home</a></li>
+        <li><a href="#product" onclick="showPage('product')">Product</a></li>
+        <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
+        <li><a href="#about" onclick="showPage('about')">About</a></li>
+      </ul>
+    </nav>
     <header>
-      <img src="logo.PNG" alt="Logo" srcset="" class="logo">
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Catalog</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
+      <h1>Academic Library</h1>
+      <p>Welcome to the Academic Library! We offer a wide range of resources and services to support your academic pursuits.</p>
     </header>
     <main>
-      <img src="students.jpg" alt="Student Icon" srcset="" class="stdicon">
-      <section>
-        <h2>Welcome to the University Library</h2>
-        <p>Our library offers a wide range of resources to support your academic journey. Explore our collection and find what you need to succeed.</p>
-        <a href="https://youtube.com" class="button">Get Started</a>
-      </section>
-      <section>
-        <h2>Latest News</h2>
+      <div id="home">
+        <section>
+          <h2>Featured Resources</h2>
+          <div class="resources">
+            <div class="resource">
+              <h3>Research Databases</h3>
+              <p>Access over 100 research databases covering a wide range of subjects.</p>
+            </div>
+            <div class="resource">
+              <h3>E-Books</h3>
+              <p>Browse our collection of over 10,000 e-books available for download.</p>
+            </div>
+            <div class="resource">
+              <h3>Research Guides</h3>
+              <p>Explore our research guides for tips and strategies on how to conduct effective research.</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Upcoming Events</h2>
+          <div class="events">
+            <div class="event">
+              <h3>Library Orientation</h3>
+              <p>Learn about the library's resources and services during our library orientation session on May 15th.</p>
+            </div>
+            <div class="event">
+              <h3>Guest Speaker Series</h3>
+              <p>Join us for our guest speaker series on May 20th, featuring renowned author and journalist, Jane Doe.</p>
+            </div>
+            <div class="event">
+              <h3>Research Workshop</h3>
+              <p>Attend our research workshop on May 25th to learn how to conduct effective research for your academic assignments.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="about">
+        <h1>About Us</h1>
+        <p>We are an academic library committed to providing our students and faculty with access to the latest research and knowledge in their fields. Our extensive collection of books, journals, and databases is carefully curated and maintained by a team of expert librarians.</p>
+        <p>At our library, we believe that access to information is essential to academic success. That's why we offer a variety of services to help our patrons find the resources they need, from research assistance to interlibrary loan.</p>
+        <p>Thank you for choosing our library as your academic home. We look forward to serving you.</p>
+      </div>
+      <div id="product">
+        <h1>Our Products</h1>
         <ul>
-          <li><a href="#">New Study Spaces Available</a></li>
-          <li><a href="#">Summer Reading Recommendations</a></li>
-          <li><a href="#">Library Hours for Final Exams</a></li>
-          <li><a href="#">Library Hours for Final Exams</a></li>
+          <li>
+            <h2>Database Access</h2>
+            <p>Our library offers access to a wide range of academic databases, including JSTOR, ProQuest, and more. These databases contain millions of articles, books, and other scholarly materials that can help you in your research.</p>
+          </li>
+          <li>
+            <h2>Interlibrary Loan</h2>
+            <p>If we don't have a book or article you need, we can help you get it through our interlibrary loan service. We'll request the item from another library and have it sent to our library for you to pick up.</p>
+          </li>
+          <li>
+            <h2>Research Assistance</h2>
+            <p>Our expert librarians are available to help you with your research, whether you're just starting out or need help finding specific resources. We offer one-on-one consultations and workshops to help you succeed in your academic work.</p>
+          </li>
         </ul>
-      </section>
-      <section>
-        <h2>ChatGPT Bot</h2>
-        <div id="chat-container">
-          <div id="messages"></div>
-          <input type="text" id="user-input" placeholder="Ask a question...">
-          <button class="send-btn">Send</button>
-        </div>        
-      </section>
+      </div>
+      <div id="contact">
+        <h1>Contact Us</h1>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+      
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+      
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+      
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </main>
     <footer>
-      <p>&copy; University Library 2023</p>
+      <p>&copy; 2023 Academic Library</p>
     </footer>
     <script src="app.js"></script>
   </body>
 </html>
-

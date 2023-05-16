@@ -134,35 +134,35 @@ footer p {
   margin-bottom: 20px;
 }
 
-#products {
+#product {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px;
 }
 
-#products h1 {
+#product h1 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-#products ul {
+#product ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-#products li {
+#product li {
   margin-bottom: 40px;
 }
 
-#products h2 {
+#product h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-#products p {
+#product p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;

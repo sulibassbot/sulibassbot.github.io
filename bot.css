@@ -1,0 +1,55 @@
+/* Responsive Chatbot */
+
+.botpress-chatbot {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .botpress-chatbot .botpress-messages {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .botpress-chatbot .botpress-messages .botpress-message {
+    margin-bottom: 5px;
+  }
+  
+  .botpress-chatbot .botpress-messages .botpress-message.botpress-user {
+    background-color: #eee;
+  }
+  
+  .botpress-chatbot .botpress-messages .botpress-message.botpress-bot {
+    background-color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .botpress-chatbot .botpress-input::-webkit-input-placeholder {
+    color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input::-moz-placeholder {
+    color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input:-ms-input-placeholder {
+    color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input::-webkit-input-placeholder {
+    color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input::-moz-placeholder {
+    color: #ccc;
+  }
+  
+  .botpress-chatbot .botpress-input:-ms-input-placeholder {
+    color: #ccc;
+  }
